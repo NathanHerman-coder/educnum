@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import PaymentForm from "../components/PaymentForm";
 
 function InscriptionForm() {
   const [formData, setFormData] = useState({
@@ -20,66 +21,78 @@ function InscriptionForm() {
       return;
     }
     try {
-      await axios.post("http://127.0.0.1:8000/api/auth/register/", {
+      await axios.post("http://localhost:5000/api/register", {
         username: formData.nom,
         email: formData.email,
         password: formData.password,
       });
       alert("Inscription réussie !");
-      setFormData({ nom: "", email: "", password: ""});
+      setFormData({ nom: "", email: "", password: "", confirmPassword: "" });
     } catch (error) {
-      alert("Erreur lors de l'inscription.");
-      console.error(error.response.data);
+      console.error(error.response?.data || error.message);
+      alert("Erreur lors de l'inscription !");
     }
   };
 
   return (
-    <div className="w-full max-w-md bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+    <div className="w-full p-8 bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl shadow-lg">
       <h2 className="text-2xl font-bold mb-6 text-center">Créer un compte</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          name="nom"
-          placeholder="Nom complet"
-          value={formData.nom}
-          onChange={handleChange}
-          className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Mot de passe"
-          value={formData.password}
-          onChange={handleChange}
-          className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-          required
-        />
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirmer le mot de passe"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-          className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-          required
-        />
-        <button
-          type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
+
+      <div className="flex flex-col md:flex-row justify-between gap-6">
+        {/* Formulaire d'inscription */}
+        <form
+          onSubmit={handleSubmit}
+          className="flex-1 space-y-4 max-w-md mx-auto md:mx-0"
         >
-          S'inscrire
-        </button>
-      </form>
+          <input
+            type="text"
+            name="nom"
+            placeholder="Nom complet"
+            value={formData.nom}
+            onChange={handleChange}
+            className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Mot de passe"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            required
+          />
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirmer le mot de passe"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            required
+          />
+          <button
+            type="submit"
+            className="w-full bg-green-900 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition dark:bg-gray-900 dark:hover:bg-gray-700"
+          >
+            S'inscrire
+          </button>
+        </form>
+
+        {/* Formulaire de paiement */}
+        <div className="flex-1 max-w-md mx-auto md:mx-0">
+          <PaymentForm />
+        </div>
+      </div>
     </div>
   );
 }
