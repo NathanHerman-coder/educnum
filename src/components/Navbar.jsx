@@ -20,7 +20,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           <Link to="/prof" className="hover:text-gray-300">Contact</Link>
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="px-3 py-2 rounded-lg bg-gray-300 dark:bg-gray-700"
+            className="px-3 py-2 rounded-full bg-gray-300 dark:bg-gray-700"
           >
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
@@ -45,7 +45,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           <Link to="/prof" className="hover:text-gray-300" onClick={() => setIsOpen(false)}>Contact</Link>
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="px-3 py-2 rounded-lg bg-gray-300 dark:bg-gray-700 mt-2"
+            className="px-3 py-2 rounded-full bg-gray-300 dark:bg-gray-700 mt-2"
           >
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
