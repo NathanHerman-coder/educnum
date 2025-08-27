@@ -15,7 +15,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
         <div className="hidden md:flex space-x-6 items-center">
           <Link to="/" className="hover:text-gray-300">Accueil</Link>
           <Link to="/profil" className="hover:text-gray-300">Inscriptions</Link>
-          <Link to="/cour" className="hover:text-gray-300">Ressources</Link>
+          <Link to="/ressource" className="hover:text-gray-300">Ressources</Link>
           <Link to="/quiz" className="hover:text-gray-300">S'entrainer</Link>
           <Link to="/prof" className="hover:text-gray-300">Contact</Link>
           <button

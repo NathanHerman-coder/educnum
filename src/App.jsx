@@ -10,6 +10,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import InscriptionForm from "./pages/InscriptionForm";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
+import CoursesPage from "./pages/CoursePage";
+import CoursesList from "./pages/CoursesList";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -23,6 +25,8 @@ function App() {
           {/* Le main change selon la route */}
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/ressource" element={<CoursesPage />} />
+            <Route path="/cour" element={<CoursesList/>}/>
             <Route path="/profil" element={<InscriptionForm />} />
             <Route path="/login" element={<LoginForm />} />
             <Route
