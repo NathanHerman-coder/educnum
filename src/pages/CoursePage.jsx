@@ -39,7 +39,7 @@ function CoursesPage() {
       if (formData.video_url) data.append("video_url", formData.video_url);
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/courses/",
+        "https://educnumbac.onrender.com/api/courses/",
         data,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

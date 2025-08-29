@@ -21,7 +21,7 @@ function InscriptionForm() {
       return;
     }
     try {
-      await axios.post("http://localhost:5000/api/register", {
+      await axios.post("http://educnumbac.onrender.com/api/register", {
         username: formData.nom,
         email: formData.email,
         password: formData.password,

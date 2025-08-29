@@ -12,7 +12,7 @@ export default function LoginForm({ onLogin }) {
     setError("");
 
     try {
-     const response = await fetch("https://backend-8gia.onrender.com/api/token/", {
+     const response = await fetch("https://educnumbac.onrender.com/api/token/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

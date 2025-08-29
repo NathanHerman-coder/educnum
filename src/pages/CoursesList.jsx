@@ -6,7 +6,7 @@ function CoursesList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/courses/")
+    axios.get("http://educnumbac.onrender.com/api/courses/")
       .then((response) => {
         setCourses(response.data);
         setLoading(false);

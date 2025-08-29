@@ -25,7 +25,7 @@ function App() {
           {/* Le main change selon la route */}
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/ressource" element={<CoursesPage />} />
+            <Route path="/post" element={<CoursesPage />} />
             <Route path="/cour" element={<CoursesList/>}/>
             <Route path="/profil" element={<InscriptionForm />} />
             <Route path="/login" element={<LoginForm />} />
